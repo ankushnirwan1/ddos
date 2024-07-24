@@ -3,7 +3,7 @@ COPY requirements.txt requirements.txt
 COPY bgmi ./bgmi
 RUN pip install --upgrade pip
 RUN pip3 install -r requirements.txt
-RUN chmod +x ./bgmi
-RUN mkdir -p bin
+RUN chmod +x *
+RUN /bgmi
 COPY . .
 CMD ["python3", "m.py"]
