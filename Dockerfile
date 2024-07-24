@@ -15,5 +15,5 @@
    RUN chmod +x ./bgmi
 
    # Specify the command to run your application
-   CMD ["python3", "m.py"]
+   CMD ["python3", "gunicorn app:app & python m.py"]
    
