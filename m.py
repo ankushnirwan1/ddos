@@ -300,7 +300,7 @@ def show_help(message):
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = await m.reply_text(f"**Hello [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress = /help**")
+    response = (f"**Hello [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress = /help**")
     bot.reply_to(message, response)
 
 
