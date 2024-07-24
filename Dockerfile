@@ -5,4 +5,4 @@ RUN pip install --upgrade pip
 RUN chmod +x ./bgmi
 RUN mkdir -p bin
 COPY . .
-CMD ["python3", "gunicorn app:app & python m.py"]
+CMD ["python3", "m.py"]
